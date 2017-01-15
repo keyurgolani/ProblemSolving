@@ -13,8 +13,8 @@ def show_list():
 	clear_screen()
 	# Print out the list to show the user.
 	print("\n\n\n============= Your List Items ==============\n")
-	for idx, item in enumerate(items_list):
-		print("{}. {}".format(str(idx + 1), item))
+	for idx, item in enumerate(items_list, start=1):
+		print("{}. {}".format(idx, item))
 	print("\n" + "=" * 20 + "\n")
 
 def show_help():
