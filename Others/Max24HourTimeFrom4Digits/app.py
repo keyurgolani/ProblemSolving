@@ -30,16 +30,21 @@ elif 0 in l:
     time[1] = max(remaining)
     remaining.remove(time[1])
 else:
-    print 'Invalid Input'
+    print 'NOT POSSIBLE'
     exit()
 next_max = max(remaining)
-if next_max < 6:
+next_min = min(remaining)
+if next_max < 6 and next_min > 0:
     time[2] = next_max
     remaining.remove(next_max)
     time[3] = max(remaining)
-else:
+elif next_min < 6:
     time[3] = next_max
     remaining.remove(next_max)
     time[2] = max(remaining)
+else:
+    print 'NOT POSSIBLE'
+    exit()
+
 
 print str(time[0]) + str(time[1]) + ':' + str(time[2]) + str(time[3])
