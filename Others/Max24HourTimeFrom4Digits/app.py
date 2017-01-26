@@ -34,14 +34,12 @@ else:
     exit()
 next_max = max(remaining)
 next_min = min(remaining)
-if next_max < 6 and next_min > 0:
+if next_max < 6:
     time[2] = next_max
-    remaining.remove(next_max)
-    time[3] = max(remaining)
+    time[3] = next_min
 elif next_min < 6:
+    time[2] = next_min
     time[3] = next_max
-    remaining.remove(next_max)
-    time[2] = max(remaining)
 else:
     print 'NOT POSSIBLE'
     exit()
