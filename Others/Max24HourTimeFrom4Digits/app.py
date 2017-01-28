@@ -1,48 +1,24 @@
-l = map(int, raw_input().split())
-time = [0, 0, 0, 0]
-remaining = l
-if 2 in l:
-    remaining.remove(2)
-    if 3 in remaining:
-        time[0] = 2
-        time[1] = 3
-        remaining.remove(3)
-    elif 2 in remaining:
-        time[0] = 2
-        time[1] = 2
-        remaining.remove(2)
-    elif 1 in remaining:
-        time[0] = 2
-        time[1] = 1
-        remaining.remove(1)
-    elif 0 in remaining:
-        time[0] = 2
-        time[1] = 0
-        remaining.remove(0)
-elif 1 in l:
-    time[0] = 1
-    remaining.remove(1)
-    time[1] = max(remaining)
-    remaining.remove(time[1])
-elif 0 in l:
-    time[0] = 0
-    remaining.remove(0)
-    time[1] = max(remaining)
-    remaining.remove(time[1])
-else:
-    print 'NOT POSSIBLE'
-    exit()
-next_max = max(remaining)
-next_min = min(remaining)
-if next_max < 6:
-    time[2] = next_max
-    time[3] = next_min
-elif next_min < 6:
-    time[2] = next_min
-    time[3] = next_max
-else:
-    print 'NOT POSSIBLE'
-    exit()
+import itertools
+
+def Max24HourTimeFrom4Digits(*args):
+    h = -1
+    m = -1
+    for permutation in list(itertools.permutations(args)):
+        hours = (permutation[0] * 10) + permutation[1]
+        minutes = (permutation[2] * 10) + permutation[3]
+        if hours < 24 and minutes < 60:
+            if hours > h or (hours == h and minutes > m):
+                h = hours
+                m = minutes
+    if h != -1 and m != -1:
+        return str(h).zfill(2) + ':' + str(m).zfill(2)
+    else:
+        return 'NOT POSSIBLE'
 
 
-print str(time[0]) + str(time[1]) + ':' + str(time[2]) + str(time[3])
+def main():
+    l = map(int, raw_input().split())
+    print Max24HourTimeFrom4Digits(l[0], l[1], l[2], l[3])
+
+
+main()

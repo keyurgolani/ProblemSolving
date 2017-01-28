@@ -1,9 +1,10 @@
+from combat import Combat
 import random
 
 COLORS = ['yellow', 'red', 'blue', 'green']
 
 
-class Monster(object):
+class Monster(Combat):
 	min_hit_points = 1
 	max_hit_points = 1
 	min_experience = 1
