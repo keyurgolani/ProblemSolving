@@ -11,3 +11,6 @@ def main():
 
 
 main()
+
+# did you see last night's episode?
+# Yeah! I can't believe Lance lost his job at the colony!!
