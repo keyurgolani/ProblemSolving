@@ -1,0 +1,7 @@
+# First priority is to give cheapest available space for a vehicle
+# Second priority is to keep consecutive spaces available for buses
+# Third priority is to give space near the entry
+# Fourth priority is to give every vehicle something to park
+# For handicapped people, if space other than handicapped space is assigned, he/she is charged according to the rate of the type of space.
+# For handicapped people, first priority is handicapped space. If not available, larger space is priority over cheaper space
+# Smaller cars do not have a parking at 1st floor. Hence, there's going to be compromise with the 'near to the entrance' preferance rather than to the 'cheaper place available' preference

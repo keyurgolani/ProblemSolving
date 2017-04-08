@@ -3,8 +3,6 @@ import requests
 requests.packages.urllib3.disable_warnings()
 import redis
 import json
-import time
-import random
 
 
 def distance_on_unit_sphere(lat1, long1, lat2, long2):
@@ -95,7 +93,7 @@ def link_weight(router, interface, links=get_all_links()):
     distances = map(lambda x: x['distance'], links.values())
     distance_avg = sum(distances) / len(distances)
     distance_std_deviation = (sum(map(lambda x: (x - distance_avg)**2, distances))/len(distances))**0.5
-    fails = map(lambda x: float(x['fails']), links.values())
+    fails = map(lambda x: x['fails'], links.values())
     fail_avg = sum(fails) / len(fails)
     fail_std_deviation = (sum(map(lambda x: (x - fail_avg)**2, fails))/len(fails))**0.5
     return ((links[(router, interface)]['latency'] - latency_avg) / latency_std_deviation) + ((links[(router, interface)]['distance'] - distance_avg) / distance_std_deviation) + ((links[(router, interface)]['fails'] - fail_avg) / (fail_std_deviation if fail_std_deviation != 0 else 1))
@@ -134,127 +132,16 @@ def get_all_paths(start, end, path=[], G=get_topology_graph()):
     return paths
 
 
-def get_weighted_paths(G=get_topology_graph(), all_paths=get_all_paths('10.210.10.100', '10.210.10.118')):
-    weighted_paths = []
-    for path in all_paths:
-        weight = 0
-        for idx, element in enumerate(path):
-            if idx == 0:
-                continue
-            weight += G[path[idx - 1]][element]["weight"]
-        weighted_paths.append((path, weight))
-        weighted_paths.sort(key=lambda x: x[1])
-    return weighted_paths
-
-
-def get_next_hop_paths(G=get_topology_graph(), weighted_paths=get_weighted_paths()):
-    paths_with_next_hops = []
-    for path in weighted_paths:
-        new_path = []
-        for idx, node in enumerate(path[0]):
-            if idx != len(path[0]) - 1:
-                new_path.append((node, G[path[0][idx]][path[0][idx+1]]['interface']))
-        paths_with_next_hops.append((new_path, path[1]))
-    return paths_with_next_hops
-
-
-def get_best_path(links, paths_with_next_hops):
-    best_path = None
-    for path in paths_with_next_hops:
-        if all(map(lambda x: links[x]['status'], path[0])):
-            best_path = path
-            break
-    return best_path
-
-
-def get_ero(links, paths_with_next_hops, interfaces):
-    best_path = get_best_path(links, paths_with_next_hops)
-    ero = []
-    for element in best_path[0]:
-        ero.append({ 'topoObjectType': 'ipv4', 'address': interfaces[element[0]][element[1]]})
-    return ero, best_path
-
-
-def set_ero(links, paths_with_next_hops, interfaces, authHeader=get_auth_header(), target_lsp="GROUP_FOUR_SF_NY_LSP{}"):
-    r = requests.get('https://10.10.2.29:8443/NorthStar/API/v1/tenant/1/topology/1/te-lsps/', headers=authHeader, verify=False)
-
-    p = json.dumps(r.json())
-    lsp_list = json.loads(p)
-
-    ero, best_path = get_ero(links, paths_with_next_hops, interfaces)
-    print 'Setting Best ERO:'
-    print ero
-
-    for lsp_count in range(1, 5):
-        for lsp in lsp_list:
-            if lsp['name'] == target_lsp.format(lsp_count):
-                break
-
-        new_lsp = {}
-        for key in ('from', 'to', 'name', 'lspIndex', 'pathType'):
-            new_lsp[key] = lsp[key]
-
-
-        new_lsp['plannedProperties'] = {
-            'ero': ero
-        }
-
-        print 'Doing LSP {}'.format(target_lsp.format(lsp_count))
-        response = requests.put('https://10.10.2.29:8443/NorthStar/API/v1/tenant/1/topology/1/te-lsps/' + str(new_lsp['lspIndex']),
-                            json = new_lsp, headers=authHeader, verify=False)
-
-    return best_path
-
-
-def reset(percent=50):
-    return random.randrange(100) < percent
-
-
-def choose_link(links):
-    if random.randint(0, 9) > 5:
-        return random.choice(links.keys()[:10])
-    else:
-        return random.choice(links.keys())
-
-
-def main():
-    authHeader = get_auth_header()
-    topology_info = get_topology_info(authHeader)
-    router_coordinates = get_router_coordinates(topology_info)
-    router_host_names = get_router_hostnames(topology_info)
-    links = get_all_links(topology_info, router_host_names, router_coordinates)
-    G = get_topology_graph(topology_info, links=links)
-    interfaces = get_interfaces(topology_info)
-    all_paths = get_all_paths('10.210.10.100', '10.210.10.118', [], G)
-    weighted_paths = get_weighted_paths(all_paths=all_paths)
-    # r = redis.StrictRedis(host='10.10.4.252', port=6379, db=0)
-    # pubsub = r.pubsub()
-    # pubsub.subscribe('link_event')
-
-    current_best_path = None
-    # for item in pubsub.listen():
-    while True:
-        time.sleep(10)
-        status = reset(50)
-        link = choose_link(links)
-        if links[link]['status'] == False:
-            print "Link Heal:"
-            print link
-            links[link]['status'] = True
-            links[links[link]['link_back']]['status'] = True
-            current_best_path = set_ero(links, get_next_hop_paths(), interfaces, authHeader)
-        else:
-            print "Link Fail:"
-            print link
-            links[link]['status'] = False
-            if current_best_path == None or link in current_best_path[0]:
-                links[links[link]['link_back']]['status'] = False
-                links[link]['fails'] += 1
-                links[links[link]['link_back']]['fails'] += 1
-                current_best_path = set_ero(links, get_next_hop_paths(), interfaces, authHeader)
-            else:
-                print '---Best Path Retained---'
-
-
-
-main()
+authHeader = get_auth_header()
+topology_info = get_topology_info(authHeader)
+router_coordinates = get_router_coordinates(topology_info)
+router_host_names = get_router_hostnames(topology_info)
+links = get_all_links(topology_info, router_host_names, router_coordinates)
+G = get_topology_graph(topology_info, links=links)
+interfaces = get_interfaces(topology_info)
+all_paths = get_all_paths('10.210.10.100', '10.210.10.118', [], G)
+for link, details in links.items():
+    print link, details
+print "\n\n\n\n\n"
+for path in all_paths:
+    print "{} - {}".format((len(path) - 1), path)
