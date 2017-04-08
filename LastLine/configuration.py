@@ -2,6 +2,12 @@ MINIMUM_PARKING_INTERVAL_SECONDS = 15 * 60
 
 lock = 1
 
+price_mapping = {
+    1: 2.50,
+    2: 5.00,
+    3: 7.50
+}
+
 parking_construct = [
     [
         [{
@@ -912,9 +918,3 @@ parking_construct = [
         }]
     ]
 ]
-
-price_mapping = {
-    1: 2.50,
-    2: 5.00,
-    3: 7.50
-}
