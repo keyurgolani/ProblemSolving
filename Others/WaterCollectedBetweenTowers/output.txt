@@ -1,0 +1,15 @@
+Case #1: 0
+Case #2: 0
+Case #3: 11
+Case #4: 3
+Case #5: 3
+Case #6: 4
+Case #7: 6
+Case #8: 17
+Case #9: 15
+Case #10: 16
+Case #11: 3
+Case #12: 11
+Case #13: 0
+Case #14: 10
+Case #15: 7

@@ -1,0 +1,47 @@
+/**
+ * Keypad Sticky Note
+ * ==================
+ *
+ * The minions have some of Professor Boolean's secrets safely locked away. Or so they think. In fact, they are so confident, they even have a password hint sticky note stuck to the keypad of the lock.
+ *
+ * The lock requires you to enter a pair of non-negative integers (a, b) into the keypad. Since the integers could be as big as 2 billion, you look to the sticky note for help.
+ *
+ * The sticky note has two numbers written on it, but even the minions know enough not to put the passwords there. They have actually written down the sum (they have it labelled as s) and the bitwise exclusive or (xor, labelled as x) of the pair of password integers (a, b) instead. That way, they only need to remember one. If they have difficulty with subtraction, they can use the bitwise exclusive or.
+ *
+ * i.e., we have that s = a+b and x = a^b (where ^ is the bitwise XOR operation).
+ *
+ * With your automated hacking equipment, each attempt to input a guess takes a few milliseconds. Since you only have a little time before you are discovered, you want to know how long it might take before you are able to try all the combinations. Thanks to the sticky note, you now can eliminate certain combinations without even having to input them into the keypad, and you can find out exactly how long it might take to crack the lock - in the worst case scenario.
+ *
+ * Write a function called answer(s, x) that finds the number of pairs (a, b) that have the target sum and xor.
+ *
+ * For example, if s=10 and x=4, then the possible values for (a, b) are (3, 7) and (7, 3),
+ * so answer would return 2.
+ *
+ * If s=5 and x=3, then there are no possible values, so answer would return 0.
+ *
+ * s and x are at least 0 and at most 2 billion.
+ *
+ *
+ * Languages
+ * =========
+ *
+ * To provide a Python solution, edit solution.py
+ * To provide a Java solution, edit solution.java
+ *
+ * Test cases
+ * ==========
+ *
+ * Inputs:
+ * (int) s = 10
+ * (int) x = 4
+ * Output:
+ * (int) 2
+ *
+ * Inputs:
+ * (int) s = 0
+ * (int) x = 0
+ * Output:
+ * (int) 1
+ *
+ * Use verify [file] to test your solution and see how it does. When you are finished editing your code, use submit [file] to submit your answer. If your solution passes the test cases, it will be removed from your home folder.
+ */

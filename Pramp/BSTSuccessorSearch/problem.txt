@@ -1,0 +1,14 @@
+ven a node n in a binary search tree, explain and code the most efficient way to find the successor of n.
+Analyze the runtime complexity of your solution.
+
+An in order successor is the smallest key that is greater than n's key.
+
+A complete solution must consider the case when n has no successor in the tree. null or any other agreed value should be returned in this case. If your peer doesn't address this, ask about it, but consider is as a hint that would lower your problem solving feedback by one star.
+
+Some programming languages lack an implementation of a tree data structure. If this is the case with language used on the interview, simply use an object / associative array for each node, with a key, parent, left child and right child.
+
+Another approach to find a successor is to start searching from the root and traverse the tree in a binary search manner. However, the root is not given in this question, only the specific node n.
+
+If you or your peer have a hard time understanding the solution, or if you could use a reminder of how binary search trees work, take this interactive BST application for a spin.
+
+https://www.cs.usfca.edu/~galles/visualization/BST.html

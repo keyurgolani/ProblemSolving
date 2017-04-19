@@ -1,0 +1,26 @@
+Find the number of consecutive days the price of stock is less than the price of stock on given day.
+
+For example if the input is [8, 6, 2, 4, 2, 5, 7] the consecutive days each day's price is higher than are given as below.
+
+[1, 1, 1, 2, 1, 4, 6]
+- First Day is the first and hence the price has only been the same or less for one day.
+- Second day has price 6 which is less than the previous day which means that the price has been equal to or less than 6 for only one day yet.
+- Third day has price 2 which by the same logic as day two, has only one day for which the price has been less than or equal to the price on that day.
+- Now, for the fourth day, the price is 4 where the price before that was 2 which is less than the current price. But the price before that is 6 which is more than 4. Meaning, the price has been less than or equal to current price for 2 days on day 4.
+- Now the price on day 5 again go down and even if there are days when the price was equal or less than the current price, there is no immediate consqcutive block of days where this condition satisfied. That means answer for this would be 1.
+- On day 6, the price is 5 which means for 3 immediate consecutive days the price was lower than the current price. Including today, we get 4 for the answer of day 6.
+- The same way on day 7, the price was 7 and there were 5 immediate consecutive days where the price was less than or equal to the current price. Which gives us 6 as an answer including today.
+
+
+**Formal Definition**
+
+Stock span problem
+We are given a list of prices of a stock for N number of days. We need to find stock span for each day. Span is defined as number of consecutive days before the given day where the price of stock was less than or equal to price at given day. For example, {100, 60,70,65, 80, 85} span for each day will be {1, 1, 2, 1, 4, 5}.
+
+For first day span is always 1. In example, notice that on day 2, price of stock is 60 and there is no day prior to it where price was less than 60. Hence span for day 2 is 1 again. For day 3, price at day 2 (60) is less than 70, hence span for day 3 is 2. Similarly, for day 4 and day 5. Remember days should be consecutive, that why span for day 4 is 1 even though there was a day 2 where price was less than 65. Hope this example clarifies the problem. Stock span problem is slightly complicated to understand but solution is pretty easy.
+One solution which immediately comes into mind  is:  For every day, scan all days prior to it and increment span till price greater than given day is seen. Simple implementation but with quadratic complexity.
+
+From above implementation, notice that the day of real interested  to us is the day where price was last seen greater than current day price. So we need to check last price which was greater than price today. Getting some hints? Yes, maintain a stack which contains prices seen in decreasing order.
+
+So while scanning prices on given days, check if there are prices which are less than current price. If yes, just pop them out. When you encounter a price which is greater than current price, stock span with maximum profit of current day is difference between day of that price and current day.  So looking carefully, it becomes apparent that, storing index of last greatest seen price would make things easier as compared to storing actual price. Hence day is store i on stack, price[i] will give us the price of stock on day i.
+
