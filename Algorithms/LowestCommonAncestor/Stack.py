@@ -48,6 +48,10 @@ class Stack(object):
         _str = ""
         current_node = self._head
         while current_node != None:
+            # Change _str += str(current_node.value.value)
+            # to
+            # _str += str(current_node.value)
+            # in case of other raw format data like int
             _str += str(current_node.value.value)
             if current_node._next != None:
                 _str += " --> "
