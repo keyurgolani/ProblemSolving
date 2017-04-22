@@ -1,3 +1,7 @@
+# Formula: Height of water column = Minimum(Tallest Left Hand Bar, Tallest Right Hand Bar) - Current Bar Height
+# Total Water that can be held = Sum(Height of water column for all the bars)
+
+
 def answer(heights):
     # Initialize total_water to 0
     total_water = 0

@@ -1,0 +1,5 @@
+Finding Missing Numbers
+Let P be a permutation of {1,2,3,…n}. Example P={4,7,3,2,6,1,9,5,8,10}
+Further, let P_(-1) be P with one element missing. Example P_(-1)={4,7,3,2,6,1,9,5,8,10}
+Paul shows Carole P_(-1) [i] in increasing order i.
+Carole’s task is to determine the missing integer. It is trivial to do the task if Carole can memorize all the numbers she has seen thus far (formally, she has an n-bit vector), but if n is large, this is impractical. Let us assume she has only a few – say O(log⁡n) – bits of memory. Nevertheless, Carole must determine the missing integer.
