@@ -1,12 +1,10 @@
-class ABBA(object):
+class ABBADiv1(object):
     def OP1(self, input):
         return input + 'A'
-    
-    
+
     def OP2(self, input):
-        return input[::-1] + 'B'
-    
-    
+        return 'B' + input[::-1]
+
     def canObtain(self, input, target):
         if input == target:
             return 'Possible'
@@ -21,10 +19,10 @@ class ABBA(object):
 
 
 def main():
-    abba = ABBA()
+    abbadiv1 = ABBADiv1()
     for case in range(int(raw_input())):
         input, target = raw_input().split()
-        print "Case #{}: {}".format(case, abba.canObtain(input, target))
+        print "Case #{}: {}".format(case, abbadiv1.canObtain(input, target))
 
 
 if __name__ == '__main__':
