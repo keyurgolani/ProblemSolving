@@ -1,7 +1,7 @@
 def max_subarray_sum(A):
     global_max = A[0]
     current_max = A[0]
-    for idx in range(1, len(A) - 1):
+    for idx in range(1, len(A)):
         current_max = A[idx] if A[idx] > A[idx] + current_max else A[idx] + current_max
         if current_max > global_max:
             global_max = current_max
@@ -11,7 +11,7 @@ def max_subarray_sum(A):
 def max_subarray(A):
     global_max = A[:1]
     current_max = A[:1]
-    for idx in range(1, len(A) - 1):
+    for idx in range(1, len(A)):
         if A[idx] > A[idx] + sum(current_max):
             current_max = A[idx:idx + 1]
         else:

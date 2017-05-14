@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Test</title>
+
+	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+	<meta http-equiv="description" content="this is my page">
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+	<!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+	<style type="text/css">
+		.cover {
+			border: 2px solid black;
+			border-radius: 5px;
+		}
+		.link {
+			font-family: Consolas, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New;
+			color: #ffffff!important;
+			text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+			font-size: 12px;
+			padding: 5px;
+			display: inline-block;
+			font-weight: bold;
+			margin: 5px 0px 5px 0px;
+			border-radius: 5px;
+			background-color: #00834B;
+			transition: box-shadow 0.2s ease-in-out;
+		}
+
+		.link:hover {
+			-webkit-box-shadow: 0 3px 2px #777;
+			-moz-box-shadow: 0 3px 2px #777;
+			box-shadow: 0 3px 2px #777;
+			text-decoration: none;
+		}
+
+		.btnObj {
+			position: relative;
+
+			display: block;
+			margin: 30px auto;
+			padding: 0;
+
+			overflow: hidden;
+
+			border-width: 0;
+			outline: none;
+			border-radius: 2px;
+			box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+
+			background-color: #2ecc71;
+			color: #ecf0f1;
+
+			transition: background-color .3s;
+		}
+
+		.btnObj:hover,
+		.btnObj:focus {
+			background-color: #27ae60;
+		}
+
+		.btnObj>* {
+			position: relative;
+		}
+
+		.btnObj span {
+			display: block;
+			padding: 12px 24px;
+		}
+
+		.btnObj:before {
+			content: "";
+
+			position: absolute;
+			top: 50%;
+			left: 50%;
+
+			display: block;
+			width: 0;
+			padding-top: 0;
+
+			border-radius: 100%;
+
+			background-color: rgba(236, 240, 241, .3);
+
+			-webkit-transform: translate(-50%, -50%);
+			-moz-transform: translate(-50%, -50%);
+			-ms-transform: translate(-50%, -50%);
+			-o-transform: translate(-50%, -50%);
+			transform: translate(-50%, -50%);
+		}
+
+		.btnObj:active:before {
+			width: 120%;
+			padding-top: 120%;
+
+			transition: width .2s ease-out, padding-top .2s ease-out;
+		}
+		/* Styles, not important */
+
+		*,
+		*:before,
+		*:after {
+			box-sizing: border-box;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="cover">
+		<div class="link">
+			Any HTML Content You Want to Display
+		</div>
+		<button class="btnObj" type="button"><span>Dummy Button</span></button>
+	</div>
+</body>
+
+
+</html>

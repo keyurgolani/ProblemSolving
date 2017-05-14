@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>demo</title>
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/4.0.2/bootstrap-material-design.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/4.0.2/bootstrap-material-design.iife.js">
+    <style type="text/css">
+    .contentObj {
+        border-radius: 5px;
+        position: absolute;
+        top: 20%;
+        font-size: 24px;
+        line-height: 25px;
+        font-family: "Trebuchet MS", Helvetica, sans-serif;
+        width: 600px;
+        max-width: 600px;
+        height: auto;
+        text-align: center;
+        z-index: 10001;
+        background: white;
+        -moz-box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, .3);
+        -webkit-box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, .3);
+        box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, .3);
+        left: 50%;
+        margin-left: -300px;
+        padding: 0px 50px 0px 50px;
+    }
+
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 10;
+        background-color: rgba(0, 0, 0, 0.5);
+        /*dim the background*/
+    }
+
+    .txt {
+        margin-bottom: 80px!important;
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+    }
+
+	.html {
+        margin-bottom: 80px!important;
+        /*text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);*/
+    }
+
+    .titleObj {
+        font-family: "Arial Black", Gadget, sans-serif;
+        font-size: 40px;
+        line-height: 50px;
+        background-color: #000000;
+        color: transparent;
+        text-shadow: 0px 2px 3px rgba(255, 255, 255, 0.3);
+        -webkit-background-clip: text;
+        -moz-background-clip: text;
+        background-clip: text;
+    }
+
+    .buttonObj {
+        color: white;
+        text-shadow: 1px 2px 3px #000, 0 0 0 #000, 1px 2px 3px #def;
+        height: 70px;
+        width: 70px;
+        cursor: pointer;
+        font-size: 34px!important;
+        line-height: 70px;
+        position: absolute;
+        bottom: -35px;
+        margin-left: -35px;
+        margin-top: 60px;
+        border: none;
+        border-radius: 50%;
+        overflow: visible;
+        text-rendering: auto;
+        display: inline-block;
+        -webkit-writing-mode: horizontal-tb;
+        -webkit-box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.58), 4px -4px 4px rgba(0, 0, 0, 0.28);
+        -moz-box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.58), 4px -4px 4px rgba(0, 0, 0, 0.28);
+        box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.58), 4px -4px 4px rgba(0, 0, 0, 0.28);
+        transition: all 0.1s linear;
+    }
+
+    .buttonObj:hover {
+        -webkit-box-shadow: 5px 4px 4px rgba(0, 0, 0, 0.58), 5px -4px 4px rgba(0, 0, 0, 0.28);
+        -moz-box-shadow: 5px 4px 4px rgba(0, 0, 0, 0.58), 5px -4px 4px rgba(0, 0, 0, 0.28);
+        box-shadow: 5px 4px 4px rgba(0, 0, 0, 0.58), 5px -4px 4px rgba(0, 0, 0, 0.28);
+        height: 71px;
+        width: 71px;
+    }
+
+    .okBtn {
+        background-color: #4caf50;
+    }
+
+    .okBtn:hover {
+        background-color: #77CC7D;
+    }
+
+	.closeBtn {
+        background-color: #f44336;
+    }
+
+    .closeBtn:hover {
+        background-color: #FF685C;
+    }
+
+    .cancelBtn {
+        background-color: #f44336;
+    }
+
+    .cancelBtn:hover {
+        background-color: #FF685C;
+    }
+
+    .one-out-of-two {
+      margin-left: -115px;
+    }
+
+    .two-out-of-two {
+      margin-left: 45px;
+    }
+
+    .fast {
+        -webkit-animation-duration: .40s!important;
+        animation-duration: .40s!important;
+    }
+
+	.typeObj {
+		background-color: #FFFFFF;
+		height: 180px;
+        margin: 0px -50px 0px -50px;
+		border-radius: 5px;
+		box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.5);
+	}
+
+    .successObj {
+        background-color: #4caf50;
+    }
+
+	.confirmObj {
+		background-color: #104DDA;
+	}
+
+    .primaryObj {
+        background-color: #009688;
+    }
+
+    .infoObj {
+        background-color: #03a9f4;
+    }
+
+    .warningObj {
+        background-color: #ff5722;
+    }
+
+    .dangerObj {
+        background-color: #f44336;
+    }
+
+    .top-icon {
+        color: white;
+        font-size: 100px;
+        line-height: 180px;
+    }
+    </style>
+    <script type="text/javascript">
+    function doSomething() {
+        sAlert(text, "Simple Alert");
+    }
+
+    function success() {
+        sSuccess(text, "Success Alert");
+    }
+
+    function primary() {
+        sPrimary(text, "Primary Alert");
+    }
+
+    function info() {
+        sInfo(text, "Info Alert");
+    }
+
+    function warning() {
+        sWarning(text, "Warning Alert");
+    }
+
+    function danger() {
+        sDanger(text, "Danger Alert");
+    }
+
+    function confirmBox() {
+        sConfirm(text, "Confirm?", function() {
+            alert("Yes");
+        }, function() {
+            alert("No");
+        });
+    }
+
+	function htmlBox() {
+        sHTML('<!DOCTYPE html><html><head><title>Test</title><meta http-equiv="keywords" content="keyword1,keyword2,keyword3"><meta http-equiv="description" content="this is my page"><meta http-equiv="content-type" content="text/html; charset=UTF-8"><style type="text/css">.cover{border: 2px solid black;border-radius: 5px;}.link{font-family: Consolas, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New;color: #ffffff!important;text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);font-size: 12px;padding: 5px;display: inline-block;font-weight: bold;margin: 5px 0px 5px 0px;border-radius: 5px;background-color: #00834B;transition: box-shadow 0.2s ease-in-out;}.link:hover{-webkit-box-shadow: 0 3px 2px #777;-moz-box-shadow: 0 3px 2px #777;box-shadow: 0 3px 2px #777;text-decoration: none;}.btnObj{position: relative;display: block;margin: 30px auto;padding: 0;overflow: hidden;border-width: 0;outline: none;border-radius: 2px;box-shadow: 0 1px 4px rgba(0, 0, 0, .6);background-color: #2ecc71;color: #ecf0f1;transition: background-color .3s;}.btnObj:hover,.btnObj:focus{background-color: #27ae60;}.btnObj>*{position: relative;}.btnObj span{display: block;padding: 12px 24px;}.btnObj:before{content: "";position: absolute;top: 50%;left: 50%;display: block;width: 0;padding-top: 0;border-radius: 100%;background-color: rgba(236, 240, 241, .3);-webkit-transform: translate(-50%, -50%);-moz-transform: translate(-50%, -50%);-ms-transform: translate(-50%, -50%);-o-transform: translate(-50%, -50%);transform: translate(-50%, -50%);}.btnObj:active:before{width: 120%;padding-top: 120%;transition: width .2s ease-out, padding-top .2s ease-out;}/* Styles, not important */*,*:before,*:after{box-sizing: border-box;}</style></head><body><div class="cover"><div class="link">Any HTML Content You Want to Display</div><button class="btnObj" type="button"><span>Dummy Button</span></button></div></body></html>');
+    }
+
+    </script>
+</head>
+
+<body>
+    <script src="foo.txt"></script>
+    <script type="text/javascript" language="javascript">
+    function cleanInput(input) {
+        return input
+            .replace(/&/g, "&amp;")
+            .replace(/>/g, "&gt;")
+            .replace(/</g, "&lt;")
+            .replace(/"/g, "&quot;")
+            .replace(/\n/g, "<br/>")
+            .replace(/\t/g, "&ensp");
+    }
+
+    function sSuccess(strContent, title) {
+        strContent = cleanInput(strContent)
+
+        var msgObj = document.createElement("div");
+        msgObj.setAttribute("id", "msgObj");
+        msgObj.className = "overlay";
+
+        var successObj = document.createElement("div");
+        successObj.setAttribute("id", "successObj");
+        successObj.className = "typeObj successObj";
+
+        var check = document.createElement("i");
+        check.setAttribute("id", "check");
+        check.innerHTML = "check_circle";
+        check.className = "material-icons top-icon animated slideInUp fast";
+
+        var contentObj = document.createElement("div");
+        contentObj.setAttribute("id", "contentObj");
+        contentObj.className = "contentObj animated bounceIn";
+
+        var titleObj = document.createElement("p");
+
+        if (title !== undefined && title !== null && typeof title === 'string' && title.length > 0) {
+            titleObj.style.margin = "10px 0";
+            titleObj.setAttribute("id", "titleObj");
+            titleObj.innerHTML = title;
+            titleObj.className = "titleObj";
+        }
+
+        var txt = document.createElement("p");
+        txt.style.margin = "20px 0";
+        txt.setAttribute("id", "msgTxt");
+        txt.innerHTML = strContent;
+        txt.className = "txt";
+
+        var okBtn = document.createElement("i");
+        okBtn.setAttribute("id", "okBtn");
+        okBtn.innerHTML = "thumb_up";
+        okBtn.className = "material-icons buttonObj okBtn";
+        okBtn.onclick = function() {
+            contentObj.className = "contentObj animated bounceOut fast"
+            setTimeout(function() {
+                document.body.removeChild(msgObj);
+            }, 400);
+        }
+
+        document.body.appendChild(msgObj);
+        document.getElementById("msgObj").appendChild(contentObj);
+        document.getElementById("contentObj").appendChild(successObj);
+        document.getElementById("successObj").appendChild(check);
+        document.getElementById("contentObj").appendChild(titleObj);
+        document.getElementById("contentObj").appendChild(txt);
+        document.getElementById("contentObj").appendChild(okBtn);
+    }
+
+    function sPrimary(strContent, title) {
+        strContent = cleanInput(strContent)
+
+        var msgObj = document.createElement("div");
+        msgObj.setAttribute("id", "msgObj");
+        msgObj.className = "overlay";
+
+        var primaryObj = document.createElement("div");
+        primaryObj.setAttribute("id", "primaryObj");
+        primaryObj.className = "typeObj primaryObj";
+
+        var desc = document.createElement("i");
+        desc.setAttribute("id", "desc");
+        desc.innerHTML = "description";
+        desc.className = "material-icons top-icon animated slideInUp fast";
+
+        var contentObj = document.createElement("div");
+        contentObj.setAttribute("id", "contentObj");
+        contentObj.className = "contentObj animated bounceIn";
+
+        var titleObj = document.createElement("p");
+
+        if (title !== undefined && title !== null && typeof title === 'string' && title.length > 0) {
+            titleObj.style.margin = "10px 0";
+            titleObj.setAttribute("id", "titleObj");
+            titleObj.innerHTML = title;
+            titleObj.className = "titleObj";
+        }
+
+        var txt = document.createElement("p");
+        txt.style.margin = "20px 0";
+        txt.setAttribute("id", "msgTxt");
+        txt.innerHTML = strContent;
+        txt.className = "txt";
+
+        var okBtn = document.createElement("i");
+        okBtn.setAttribute("id", "okBtn");
+        okBtn.innerHTML = "thumb_up";
+        okBtn.className = "material-icons buttonObj okBtn";
+        okBtn.onclick = function() {
+            contentObj.className = "contentObj animated bounceOut fast"
+            setTimeout(function() {
+                document.body.removeChild(msgObj);
+            }, 400);
+        }
+
+        document.body.appendChild(msgObj);
+        document.getElementById("msgObj").appendChild(contentObj);
+        document.getElementById("contentObj").appendChild(primaryObj);
+        document.getElementById("primaryObj").appendChild(desc);
+        document.getElementById("contentObj").appendChild(titleObj);
+        document.getElementById("contentObj").appendChild(txt);
+        document.getElementById("contentObj").appendChild(okBtn);
+    }
+
+    function sInfo(strContent, title) {
+        strContent = cleanInput(strContent)
+
+        var msgObj = document.createElement("div");
+        msgObj.setAttribute("id", "msgObj");
+        msgObj.className = "overlay";
+
+        var infoObj = document.createElement("div");
+        infoObj.setAttribute("id", "infoObj");
+        infoObj.className = "typeObj infoObj";
+
+        var info = document.createElement("i");
+        info.setAttribute("id", "info");
+        info.innerHTML = "lightbulb_outline";
+        info.className = "material-icons top-icon animated slideInUp fast";
+
+        var contentObj = document.createElement("div");
+        contentObj.setAttribute("id", "contentObj");
+        contentObj.className = "contentObj animated bounceIn";
+
+        var titleObj = document.createElement("p");
+
+        if (title !== undefined && title !== null && typeof title === 'string' && title.length > 0) {
+            titleObj.style.margin = "10px 0";
+            titleObj.setAttribute("id", "titleObj");
+            titleObj.innerHTML = title;
+            titleObj.className = "titleObj";
+        }
+
+        var txt = document.createElement("p");
+        txt.style.margin = "20px 0";
+        txt.setAttribute("id", "msgTxt");
+        txt.innerHTML = strContent;
+        txt.className = "txt";
+
+        var okBtn = document.createElement("i");
+        okBtn.setAttribute("id", "okBtn");
+        okBtn.innerHTML = "thumb_up";
+        okBtn.className = "material-icons buttonObj okBtn";
+        okBtn.onclick = function() {
+            contentObj.className = "contentObj animated bounceOut fast"
+            setTimeout(function() {
+                document.body.removeChild(msgObj);
+            }, 400);
+        }
+
+        document.body.appendChild(msgObj);
+        document.getElementById("msgObj").appendChild(contentObj);
+        document.getElementById("contentObj").appendChild(infoObj);
+        document.getElementById("infoObj").appendChild(info);
+        document.getElementById("contentObj").appendChild(titleObj);
+        document.getElementById("contentObj").appendChild(txt);
+        document.getElementById("contentObj").appendChild(okBtn);
+    }
+
+    function sWarning(strContent, title) {
+        strContent = cleanInput(strContent)
+
+        var msgObj = document.createElement("div");
+        msgObj.setAttribute("id", "msgObj");
+        msgObj.className = "overlay";
+
+        var warningObj = document.createElement("div");
+        warningObj.setAttribute("id", "warningObj");
+        warningObj.className = "typeObj warningObj";
+
+        var warning = document.createElement("i");
+        warning.setAttribute("id", "warning");
+        warning.innerHTML = "error";
+        warning.className = "material-icons top-icon animated slideInUp fast";
+
+        var contentObj = document.createElement("div");
+        contentObj.setAttribute("id", "contentObj");
+        contentObj.className = "contentObj animated bounceIn";
+
+        var titleObj = document.createElement("p");
+
+        if (title !== undefined && title !== null && typeof title === 'string' && title.length > 0) {
+            titleObj.style.margin = "10px 0";
+            titleObj.setAttribute("id", "titleObj");
+            titleObj.innerHTML = title;
+            titleObj.className = "titleObj";
+        }
+
+        var txt = document.createElement("p");
+        txt.style.margin = "20px 0";
+        txt.setAttribute("id", "msgTxt");
+        txt.innerHTML = strContent;
+        txt.className = "txt";
+
+        var okBtn = document.createElement("i");
+        okBtn.setAttribute("id", "okBtn");
+        okBtn.innerHTML = "thumb_up";
+        okBtn.className = "material-icons buttonObj okBtn";
+        okBtn.onclick = function() {
+            contentObj.className = "contentObj animated bounceOut fast"
+            setTimeout(function() {
+                document.body.removeChild(msgObj);
+            }, 400);
+        }
+
+        document.body.appendChild(msgObj);
+        document.getElementById("msgObj").appendChild(contentObj);
+        document.getElementById("contentObj").appendChild(warningObj);
+        document.getElementById("warningObj").appendChild(warning);
+        document.getElementById("contentObj").appendChild(titleObj);
+        document.getElementById("contentObj").appendChild(txt);
+        document.getElementById("contentObj").appendChild(okBtn);
+    }
+
+    function sDanger(strContent, title) {
+        strContent = cleanInput(strContent)
+
+        var msgObj = document.createElement("div");
+        msgObj.setAttribute("id", "msgObj");
+        msgObj.className = "overlay";
+
+        var dangerObj = document.createElement("div");
+        dangerObj.setAttribute("id", "dangerObj");
+        dangerObj.className = "typeObj dangerObj";
+
+        var cancel = document.createElement("i");
+        cancel.setAttribute("id", "cancel");
+        cancel.innerHTML = "cancel";
+        cancel.className = "material-icons top-icon animated slideInUp fast";
+
+        var contentObj = document.createElement("div");
+        contentObj.setAttribute("id", "contentObj");
+        contentObj.className = "contentObj animated bounceIn";
+
+        var titleObj = document.createElement("p");
+
+        if (title !== undefined && title !== null && typeof title === 'string' && title.length > 0) {
+            titleObj.style.margin = "10px 0";
+            titleObj.setAttribute("id", "titleObj");
+            titleObj.innerHTML = title;
+            titleObj.className = "titleObj";
+        }
+
+        var txt = document.createElement("p");
+        txt.style.margin = "20px 0";
+        txt.setAttribute("id", "msgTxt");
+        txt.innerHTML = strContent;
+        txt.className = "txt";
+
+        var okBtn = document.createElement("i");
+        okBtn.setAttribute("id", "okBtn");
+        okBtn.innerHTML = "thumb_up";
+        okBtn.className = "material-icons buttonObj okBtn";
+        okBtn.onclick = function() {
+            contentObj.className = "contentObj animated bounceOut fast"
+            setTimeout(function() {
+                document.body.removeChild(msgObj);
+            }, 400);
+        }
+
+        document.body.appendChild(msgObj);
+        document.getElementById("msgObj").appendChild(contentObj);
+        document.getElementById("contentObj").appendChild(dangerObj);
+        document.getElementById("dangerObj").appendChild(cancel);
+        document.getElementById("contentObj").appendChild(titleObj);
+        document.getElementById("contentObj").appendChild(txt);
+        document.getElementById("contentObj").appendChild(okBtn);
+    }
+
+    function sAlert(strContent, title) {
+        strContent = cleanInput(strContent)
+
+        var msgObj = document.createElement("div");
+        msgObj.setAttribute("id", "msgObj");
+        msgObj.className = "overlay";
+
+        var contentObj = document.createElement("div");
+        contentObj.setAttribute("id", "contentObj");
+        contentObj.className = "contentObj animated bounceIn";
+
+        var titleObj = document.createElement("p");
+
+        if (title !== undefined && title !== null && typeof title === 'string' && title.length > 0) {
+            titleObj.style.margin = "10px 0";
+            titleObj.setAttribute("id", "titleObj");
+            titleObj.innerHTML = title;
+            titleObj.className = "titleObj";
+        }
+
+        var txt = document.createElement("p");
+        txt.style.margin = "20px 0";
+        txt.setAttribute("id", "msgTxt");
+        txt.innerHTML = strContent;
+        txt.className = "txt";
+
+        var okBtn = document.createElement("i");
+        okBtn.setAttribute("id", "okBtn");
+        okBtn.innerHTML = "thumb_up";
+        okBtn.className = "material-icons buttonObj okBtn";
+        okBtn.onclick = function() {
+            contentObj.className = "contentObj animated bounceOut fast";
+            setTimeout(function() {
+                document.body.removeChild(msgObj);
+            }, 400);
+        }
+
+        document.body.appendChild(msgObj);
+        document.getElementById("msgObj").appendChild(contentObj);
+        document.getElementById("contentObj").appendChild(titleObj);
+        document.getElementById("contentObj").appendChild(txt);
+        document.getElementById("contentObj").appendChild(okBtn);
+    }
+
+	function sHTML(htmlContent) {
+
+        var msgObj = document.createElement("div");
+        msgObj.setAttribute("id", "msgObj");
+        msgObj.className = "overlay";
+
+        var contentObj = document.createElement("div");
+        contentObj.setAttribute("id", "contentObj");
+        contentObj.className = "contentObj animated bounceIn";
+
+        var html = document.createElement("div");
+        html.style.margin = "20px 0";
+        html.setAttribute("id", "html");
+        html.innerHTML = htmlContent;
+        html.className = "html";
+
+        var closeBtn = document.createElement("i");
+        closeBtn.setAttribute("id", "closeBtn");
+        closeBtn.innerHTML = "close";
+        closeBtn.className = "material-icons buttonObj closeBtn";
+        closeBtn.onclick = function() {
+            contentObj.className = "contentObj animated bounceOut fast";
+            setTimeout(function() {
+                document.body.removeChild(msgObj);
+            }, 400);
+        }
+
+        document.body.appendChild(msgObj);
+        document.getElementById("msgObj").appendChild(contentObj);
+        document.getElementById("contentObj").appendChild(html);
+        document.getElementById("contentObj").appendChild(closeBtn);
+    }
+
+    function sConfirm(strContent, title, successCallback, failureCallback) {
+        strContent = cleanInput(strContent)
+
+        var msgObj = document.createElement("div");
+        msgObj.setAttribute("id", "msgObj");
+        msgObj.className = "overlay";
+
+        var confirmObj = document.createElement("div");
+        confirmObj.setAttribute("id", "confirmObj");
+        confirmObj.className = "typeObj confirmObj";
+
+        var choice = document.createElement("i");
+        choice.setAttribute("id", "choice");
+        choice.innerHTML = "call_split";
+        choice.className = "material-icons top-icon animated slideInUp fast";
+
+        var contentObj = document.createElement("div");
+        contentObj.setAttribute("id", "contentObj");
+        contentObj.className = "contentObj animated bounceIn";
+
+        var titleObj = document.createElement("p");
+
+        if (title !== undefined && title !== null && typeof title === 'string' && title.length > 0) {
+            titleObj.style.margin = "10px 0";
+            titleObj.setAttribute("id", "titleObj");
+            titleObj.innerHTML = title;
+            titleObj.className = "titleObj";
+        }
+
+        var txt = document.createElement("p");
+        txt.style.margin = "20px 0";
+        txt.setAttribute("id", "msgTxt");
+        txt.innerHTML = strContent;
+        txt.className = "txt";
+
+        var okBtn = document.createElement("i");
+        okBtn.setAttribute("id", "okBtn");
+        okBtn.innerHTML = "thumb_up";
+        okBtn.className = "material-icons buttonObj okBtn one-out-of-two";
+        okBtn.onclick = function() {
+            contentObj.className = "contentObj animated bounceOut fast"
+            setTimeout(function() {
+                document.body.removeChild(msgObj);
+                if (typeof successCallback === 'function') {
+                    successCallback();
+                }
+            }, 400);
+        }
+
+        var cancelButton = document.createElement("i");
+        cancelButton.setAttribute("id", "cancelButton");
+        cancelButton.innerHTML = "thumb_down";
+        cancelButton.className = "material-icons buttonObj cancelBtn two-out-of-two";
+        cancelButton.onclick = function() {
+            contentObj.className = "contentObj animated bounceOut fast"
+            setTimeout(function() {
+                document.body.removeChild(msgObj);
+                if (typeof failureCallback === 'function') {
+                    failureCallback();
+                }
+            }, 400);
+        }
+
+        document.body.appendChild(msgObj);
+        document.getElementById("msgObj").appendChild(contentObj);
+        document.getElementById("contentObj").appendChild(confirmObj);
+        document.getElementById("confirmObj").appendChild(choice);
+        document.getElementById("contentObj").appendChild(titleObj);
+        document.getElementById("contentObj").appendChild(txt);
+        document.getElementById("contentObj").appendChild(okBtn);
+        document.getElementById("contentObj").appendChild(cancelButton);
+    }
+    </script>
+    <center>
+        <input type="button" value="Click if you like AiNuco" onclick="doSomething()" style="width: 600px;
+                height: 200px;
+                border: 10px solid blue;
+                color:red;
+                background-color:pink;
+                font-size: 50px;
+                margin-bottom: 60px;">
+    </center>
+    <center>
+        <input type="button" value="Try Me" onclick="success()" style="width: 120px;
+                height: 50px;
+                font-size: 25px;
+                margin-left: 20px;
+                margin-right: 20px;
+                border-radius: 5px;
+                -moz-box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, .3);
+                -webkit-box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, .3);
+                box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, .3);" class="btn btn-raised btn-success">
+        <input type="button" value="Try Me" onclick="primary()" style="width: 120px;
+                height: 50px;
+                font-size: 25px;
+                margin-left: 20px;
+                margin-right: 20px;
+                border-radius: 5px;
+                -moz-box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, .3);
+                -webkit-box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, .3);
+                box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, .3);" class="btn btn-raised btn-primary">
+        <input type="button" value="Try Me" onclick="info()" style="width: 120px;
+                height: 50px;
+                font-size: 25px;
+                margin-left: 20px;
+                margin-right: 20px;
+                border-radius: 5px;
+                -moz-box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, .3);
+                -webkit-box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, .3);
+                box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, .3);" class="btn btn-raised btn-info">
+        <input type="button" value="Try Me" onclick="danger()" style="width: 120px;
+                height: 50px;
+                font-size: 25px;
+                margin-left: 20px;
+                margin-right: 20px;
+                border-radius: 5px;
+                -moz-box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, .3);
+                -webkit-box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, .3);
+                box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, .3);" class="btn btn-raised btn-danger">
+        <input type="button" value="Try Me" onclick="warning()" style="width: 120px;
+                height: 50px;
+                font-size: 25px;
+                margin-left: 20px;
+                margin-right: 20px;
+                border-radius: 5px;
+                -moz-box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, .3);
+                -webkit-box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, .3);
+                box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, .3);" class="btn btn-raised btn-warning">
+        <input type="button" value="Try Me" onclick="confirmBox()" style="width: 120px;
+                height: 50px;
+                font-size: 25px;
+                margin-left: 20px;
+                margin-right: 20px;
+                border-radius: 5px;
+                -moz-box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, .3);
+                -webkit-box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, .3);
+                box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, .3);" class="btn btn-raised btn-default">
+		<input type="button" value="Try Me" onclick="htmlBox()" style="width: 120px;
+                height: 50px;
+                font-size: 25px;
+                margin-left: 20px;
+                margin-right: 20px;
+                border-radius: 5px;
+                -moz-box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, .3);
+                -webkit-box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, .3);
+                box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, .3);" class="btn btn-raised active">
+    </center>
+</body>
+
+</html>
