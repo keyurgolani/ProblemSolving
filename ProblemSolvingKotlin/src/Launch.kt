@@ -9,7 +9,6 @@ fun main(args: Array<String>) {
     2. Maximum Pairwise Product
     3. Maximum Pairwise Sum
     4. Fibonacci Series Till Number
-    4. Fibonacci Number
     5. Fibonacci Number at position
     6. Last Digit of Fibonacci Number at position
     7. GCD of Two Numbers
@@ -65,7 +64,7 @@ fun main(args: Array<String>) {
         }
         7 -> {
             closure = {
-                val (number1, number2) = takeTwoIntInput()
+                val (number1, number2) = takeTwoBigIntInput()
                 println("GCD of $number1 and $number2")
                 timeit { println(gcdOf(number1, number2)) }
             }

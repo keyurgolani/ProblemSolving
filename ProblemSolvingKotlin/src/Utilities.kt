@@ -1,3 +1,4 @@
+import java.math.BigInteger
 import java.sql.Timestamp
 import java.util.*
 
@@ -14,7 +15,6 @@ fun takeIntInput(): Int {
     // Assuming user will always enter something for input
     val input = Scanner(System.`in`)
     val value = input.nextInt()
-//    input.close()
     return value
 }
 
@@ -23,7 +23,14 @@ fun takeTwoIntInput(): Pair<Int, Int> {
     val input = Scanner(System.`in`)
     val value1 = input.nextInt()
     val value2 = input.nextInt()
-//    input.close()
+    return Pair(value1, value2)
+}
+
+fun takeTwoBigIntInput(): Pair<BigInteger, BigInteger> {
+    // Assuming user will always enter something for input
+    val input = Scanner(System.`in`)
+    val value1: BigInteger = input.nextBigInteger()
+    val value2: BigInteger = input.nextBigInteger()
     return Pair(value1, value2)
 }
 

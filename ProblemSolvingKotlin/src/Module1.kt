@@ -1,3 +1,5 @@
+import java.math.BigInteger
+
 /**
  * Created by keyurgolani on 6/1/17.
  */
@@ -48,10 +50,43 @@ fun  maxPairwiseSum(values: List<Int>): Int {
     return maxOne + maxTwo
 }
 
-fun  gcdOf(number1: Int, number2: Int): Any? {}
+fun  fibonacciSeriesTill(position: Int): List<BigInteger> {
+    val fibonacci: MutableList<BigInteger> = mutableListOf(BigInteger.ZERO, BigInteger.ONE)
+    if (position > 1) {
+        (2..position - 1).forEach { fibonacci.add(it, fibonacci[it - 1] + fibonacci[it - 2]) }
+    }
+    return fibonacci
+}
 
-fun  lastDigitOfFibonacciNumberAt(position: Int): Any? {}
+fun  fibonacciNumberAt(position: Int): BigInteger {
+    val fibonacci: MutableList<BigInteger> = mutableListOf(BigInteger.ZERO, BigInteger.ONE)
+    if (position > 1) {
+        (2..position - 1).forEach {
+            fibonacci[1] = fibonacci[0] + fibonacci[1]
+            fibonacci[0] = fibonacci[1] - fibonacci[0]
+        }
+    }
+    return fibonacci[1]
+}
 
-fun  fibonacciNumberAt(position: Int): Any? {}
+fun  lastDigitOfFibonacciNumberAt(position: Int): Int {
+    val fibonacci: MutableList<Int> = mutableListOf(0, 1)
+    if (position > 1) {
+        (2..position - 1).forEach {
+            fibonacci[1] = fibonacci[0] % 10 + fibonacci[1] % 10
+            fibonacci[0] = fibonacci[1] % 10 - fibonacci[0] % 10
+        }
+    }
+    return (((fibonacci[1] % 10) + 10) % 10)
+}
 
-fun  fibonacciSeriesTill(position: Int): Any {}
+fun  gcdOf(number1: BigInteger, number2: BigInteger): BigInteger {
+    var num1 = number1
+    var num2 = number2
+    while (num2 != BigInteger.ZERO) {
+        val temp = num2
+        num2 = num1 % num2
+        num1 = temp
+    }
+    return num1
+}

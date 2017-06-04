@@ -9,7 +9,6 @@ def main():
     2. Maximum Pairwise Product
     3. Maximum Pairwise Sum
     4. Fibonacci Series Till Number
-    4. Fibonacci Number
     5. Fibonacci Number at position
     6. Last Digit of Fibonacci Number at position
     7. GCD of Two Numbers
