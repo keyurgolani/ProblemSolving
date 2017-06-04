@@ -17,6 +17,7 @@ fun main(args: Array<String>) {
     var closure = {  }
     when(takeIntInput()) {
         1 -> {
+            // Sum of all inputs
             closure = {
                 println("Sum of Inputs")
                 val input: List<Int> = takeArrayIntInput()
@@ -25,32 +26,48 @@ fun main(args: Array<String>) {
         }
         2 -> {
             closure = {
-
+                println("Maximum Pairwise Product")
+                val input: List<Int> = takeArrayIntInput()
+                timeit { println(maxPairwiseProduct(input)) }
             }
         }
         3 -> {
             closure = {
-
+                println("Maximum Pairwise Sum")
+                val input: List<Int> = takeArrayIntInput()
+                timeit { println(maxPairwiseSum(input)) }
             }
         }
         4 -> {
             closure = {
-
+                val position: Int = takeIntInput()
+                println("Fibonacci Series Till Position $position")
+                timeit {
+                    for (fibonacciNumber in fibonacciSeriesTill(position)) {
+                        print("$fibonacciNumber ")
+                    }
+                }
             }
         }
         5 -> {
             closure = {
-
+                val position: Int = takeIntInput()
+                println("Fibonacci Number at Position $position")
+                timeit { println(fibonacciNumberAt(position)) }
             }
         }
         6 -> {
             closure = {
-
+                val position: Int = takeIntInput()
+                println("Last Digit of Fibonacci Number at Position $position")
+                timeit { println(lastDigitOfFibonacciNumberAt(position)) }
             }
         }
         7 -> {
             closure = {
-
+                val (number1, number2) = takeTwoIntInput()
+                println("GCD of $number1 and $number2")
+                timeit { println(gcdOf(number1, number2)) }
             }
         }
         8 -> {

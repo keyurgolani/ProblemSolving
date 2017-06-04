@@ -19,7 +19,7 @@ def max_pairwise_product(values):
     :param values: an array of integer values
     :return: maximum pairwise product from the input values
     """
-    if len(values) == 0:
+    if len(values) <= 1:
         return None
     max_one = -sys.maxint - 1
     max_two = -sys.maxint - 1
@@ -49,7 +49,7 @@ def max_pairwise_sum(values):
     :param values: an array of integer values
     :return: maximum pairwise sum from the input values
     """
-    if len(values) == 0:
+    if len(values) <= 1:
         return None
     max_one = -sys.maxint - 1
     max_two = -sys.maxint - 1

@@ -52,7 +52,7 @@ def main():
     elif choice == 7:
         # GCD of two numbers
         def closure():
-            print "GCD of Two Numbers"
+            print "GCD of {} and {}".format(*Util.take_int_input(2))
             print MOne.gcd(*Util.take_int_input(2))
     else:
         # Default Case
