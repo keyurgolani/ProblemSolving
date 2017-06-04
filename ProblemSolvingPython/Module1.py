@@ -109,6 +109,7 @@ def gcd(number_one, number_two):
     :param number_two: Integer Number two for GCD
     :return: Integer Greatest Common Divisor for two numbers input
     """
+    print number_one, number_two
     while number_two != 0:
         number_one, number_two = number_two, number_one % number_two
     return number_one

@@ -12,7 +12,8 @@ def main():
     5. Fibonacci Number at position
     6. Last Digit of Fibonacci Number at position
     7. GCD of Two Numbers
-    """)
+    
+""")
 
     if choice == 1:
         # Sum of input numbers
@@ -51,8 +52,9 @@ def main():
     elif choice == 7:
         # GCD of two numbers
         def closure():
-            print "GCD of {} and {}".format(*Util.take_int_input(2))
-            print MOne.gcd(*Util.take_int_input(2))
+            numbers = Util.take_int_input(2)
+            print "GCD of {} and {}".format(*numbers)
+            print MOne.gcd(*numbers)
     else:
         # Default Case
         def closure():
