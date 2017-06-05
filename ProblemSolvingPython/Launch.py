@@ -11,7 +11,11 @@ def main():
     4. Fibonacci Series Till Number
     5. Fibonacci Number at position
     6. Last Digit of Fibonacci Number at position
-    7. GCD of Two Numbers
+    7. Fibonacci Number at position modulo given number
+    8. Last digit of sum of fibonacci numbers till position
+    9. Last digit of partial sum of fibonacci numbers from start till limit
+    10. GCD of Two Numbers
+    11. LCM of Two Numbers
     
 """)
 
@@ -50,11 +54,35 @@ def main():
             print "Last Digit of Fibonacci Number at {}".format(*position)
             print MOne.fibonacci_number_last_digit(*position)
     elif choice == 7:
+        # Fibonacci Number at position modulo given number
+        def closure():
+            values = Util.take_int_input(2)
+            print "Fibonacci Number at {} modulo {}".format(*values)
+            print MOne.fibonacci_number_modulo(*values)
+    elif choice == 8:
+        # Last digit of sum of fibonacci numbers till limit
+        def closure():
+            limit = Util.take_int_input(1)
+            print "Last digit of sum of fibonacci numbers till position {}".format(*limit)
+            print MOne.last_digit_of_sum_of_fibonacci_numbers_till(*limit)
+    elif choice == 9:
+        # Last digit of partial sum of fibonacci numbers from start till limit
+        def closure():
+            bounds = Util.take_int_input(2)
+            print "Last digit of partial sum of fibonacci numbers from {} till {}".format(*bounds)
+            print MOne.last_digit_of_partial_sum_of_fibonacci_numbers(*bounds)
+    elif choice == 10:
         # GCD of two numbers
         def closure():
             numbers = Util.take_int_input(2)
             print "GCD of {} and {}".format(*numbers)
             print MOne.gcd(*numbers)
+    elif choice == 11:
+        # LCM of two numbers
+        def closure():
+            numbers = Util.take_int_input(2)
+            print "LCM of {} and {}".format(*numbers)
+            print MOne.lcm(*numbers)
     else:
         # Default Case
         def closure():

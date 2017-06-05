@@ -1,4 +1,5 @@
 import sys
+import Utilities as Util
 
 
 def sum_of_numbers(values):
@@ -67,7 +68,7 @@ def fibonacci_series(limit):
     :return: yields fibonacci value of current idx
     """
     fibonacci = [0, 1]
-    for idx in range(limit):
+    for idx in range(limit+1):
         if idx <= 1:
             yield fibonacci[idx]
         else:
@@ -82,10 +83,10 @@ def fibonacci_number(position):
     :return: returns the integer number at position from fibonacci series
     """
     fibonacci = [0, 1]
-    for idx in range(position):
+    for idx in range(position+1):
         if idx > 1:
             fibonacci.append(fibonacci[idx - 1] + fibonacci[idx - 2])
-    return fibonacci[position - 1]
+    return fibonacci[position]
 
 
 def fibonacci_number_last_digit(position):
@@ -95,10 +96,65 @@ def fibonacci_number_last_digit(position):
     :return: returns the integer last digit of number at position from fibonacci series
     """
     fibonacci = [0, 1]
-    for idx in range(position):
+    for idx in range(position+1):
         if idx > 1:
             fibonacci.append((fibonacci[idx - 1] + fibonacci[idx - 2]) % 10)
-    return fibonacci[position - 1]
+    return fibonacci[position]
+
+
+def fibonacci_number_modulo(position, number):
+    """
+    Returns the fibonacci number at given position modulo given number
+    :param position: position for the fibonacci number in fibonacci series
+    :param number: number to modulo fibonacci number with
+    :return: integer modulo value of fibonacci number at position with given number
+    """
+    if number == 0:
+        return fibonacci_number(position)
+    elif number == 1:
+        return 0
+    else:
+        pattern_position = position % Util.get_pisano_period(number)
+        return fibonacci_number(pattern_position) % number
+
+
+def last_digit_of_sum_of_fibonacci_numbers_till(limit):
+    """
+    Returns last digit of sum of fibonacci numbers till limit
+    :param limit: limit till which to sum the fibonacci numbers
+    :return: returns integer last digit of sum of all fibonacci numbers till given limit
+    """
+    sum = 0
+    fibonacci = [0, 1]
+    for idx in range(limit + 1):
+        if idx <= 1:
+            sum += fibonacci[idx] % 10
+        else:
+            fibonacci[0], fibonacci[1] = fibonacci[1], fibonacci[0] + fibonacci[1]
+            sum += fibonacci[1] % 10
+    return sum % 10
+
+
+def last_digit_of_partial_sum_of_fibonacci_numbers(start, end):
+    """
+    Returns last digit of partial sum of fibonacci numbers from start till end
+    :param start: start position of the partial sum in series
+    :param end: end position of the partial sum in series
+    :return: returns integer last digit of partial sum of all fibonacci numbers from start till end
+    """
+    sum = 0
+    fibonacci = [0, 1]
+    for idx in range(start):
+        if idx > 1:
+            fibonacci[0], fibonacci[1] = fibonacci[1], fibonacci[0] + fibonacci[1]
+    for idx in range(start, end+1):
+        if idx <= 1:
+            sum += fibonacci[idx] % 10
+        else:
+            fibonacci[0], fibonacci[1] = fibonacci[1], fibonacci[0] + fibonacci[1]
+            sum += fibonacci[1] % 10
+    return sum % 10
+
 
 
 def gcd(number_one, number_two):
@@ -109,7 +165,17 @@ def gcd(number_one, number_two):
     :param number_two: Integer Number two for GCD
     :return: Integer Greatest Common Divisor for two numbers input
     """
-    print number_one, number_two
     while number_two != 0:
         number_one, number_two = number_two, number_one % number_two
     return number_one
+
+
+def lcm(number_one, number_two):
+    """
+    Gives Greatest Common Divisor for the numbers passed
+    Used Euclidean Algorithm
+    :param number_one: Integer Number one for GCD
+    :param number_two: Integer Number two for GCD
+    :return: Integer Greatest Common Divisor for two numbers input
+    """
+    return number_one * number_two / gcd(number_one, number_two)

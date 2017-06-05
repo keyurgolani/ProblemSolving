@@ -20,6 +20,16 @@ def take_int_input(how_many):
     return tuple(map(int, sys.stdin.readline().split(" "))[:how_many])
 
 
+def get_pisano_period(number):
+    s = []
+    a = k = 0
+    b = 1
+    while s[:k] != s[k:] or k < 1:
+        s += [a % number]
+        k = len(s) / 2
+        a, b = b, a + b
+    return k
+
 def timeit(closure):
     start = time.time()
     closure()
