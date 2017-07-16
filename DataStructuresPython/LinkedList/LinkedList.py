@@ -3,6 +3,14 @@ class LLNode(object):
         self._value = value
         self._next = next
 
+    def __del__(self):
+        del self._value
+        del self._next
+
+    def __delete__(self):
+        del self._value
+        del self._next
+
     @property
     def value(self):
         return self._value
@@ -81,13 +89,16 @@ class LinkedList(object):
         node_last.next = self._head
         self._head = node_first
 
-    def append(self, node, position=None):
-        if position is None or position == 0:
+    def append(self, node, key=None):
+        if key is None or key == 0:
             self.append_front(node)
         else:
             current_node = self._head
-            for _ in range(position - 1):
-                current_node = current_node.next
+            try:
+                for _ in range(key - 1):
+                    current_node = current_node.next
+            except AttributeError:
+                raise IndexError('Index ' + str(key) + ' out of range')
             node_first = node
             node_last = node
             while node_last.next is not None:
@@ -161,6 +172,51 @@ class LinkedList(object):
             else:
                 return True
 
+    def __compare__(self, other, greater, less, equal):
+        if self._head is None and other.head is None:
+            return True if equal else False
+        elif self._head is None and other.head is not None:
+            return True if less else False
+        elif self._head is not None and other.head is None:
+            return True if greater else False
+        else:
+            self_ptr = self._head
+            other_ptr = other.head
+            while self_ptr is not None and other_ptr is not None and self_ptr.value == other_ptr.value:
+                self_ptr = self_ptr.next
+                other_ptr = other_ptr.next
+            if self_ptr is None and other_ptr is None:
+                return True if equal else False
+            elif self_ptr is None and other_ptr is not None:
+                return True if less else False
+            elif self_ptr is not None and other_ptr is None:
+                return True if greater else False
+            else:
+                if self_ptr.value > other_ptr.value:
+                    return True if greater else False
+                elif self_ptr.value < other_ptr.value:
+                    return True if less else False
+                else:
+                    return True if equal else False
+
+    def __ge__(self, other):
+        return self.__compare__(other, True, False, True)
+
+    def __le__(self, other):
+        return self.__compare__(other, False, True, True)
+
+    def __gt__(self, other):
+        return self.__compare__(other, True, False, False)
+
+    def __lt__(self, other):
+        return self.__compare__(other, False, True, False)
+
+    def __eq__(self, other):
+        return self.__compare__(other, False, False, True)
+
+    def __ne__(self, other):
+        return not self.__compare__(other, False, False, True)
+
     def __contains__(self, item):
         if self._head is None:
             return False
@@ -175,4 +231,55 @@ class LinkedList(object):
                 return False
 
     def __delitem__(self, key):
+        if self._head is None:
+            return False
+        else:
+            current_node = self._head
+            try:
+                for _ in range(key - 1):
+                    current_node = current_node.next
+            except AttributeError:
+                raise IndexError('Index ' + str(key) + ' out of range')
+            del_node = current_node.next
+            current_node.next = del_node.next
+            del del_node
+            return True
+
+    def __delslice__(self, i, j):
+        if self._head is None:
+            return False
+        else:
+            node_before_slice = self._head
+            try:
+                for _ in range(i - 1):
+                    node_before_slice = node_before_slice.next
+            except AttributeError:
+                raise IndexError('Index ' + str(i) + ' out of range')
+            slice_first_node = node_before_slice.next
+            node_after_slice = slice_first_node
+            try:
+                for _ in range(j - i):
+                    node_after_slice = node_after_slice.next
+            except AttributeError:
+                raise IndexError('Index ' + str(j) + ' out of range')
+            node_after_slice = slice_first_node
+            for _ in range(j - i):
+                del_node = node_after_slice
+                node_after_slice = node_after_slice.next
+                del del_node
+            node_before_slice.next = node_after_slice
+            return True
+
+    def __len__(self):
+        if self._head is None:
+            return 0
+        else:
+            current_node = self._head
+            length = 0
+            while current_node is not None:
+                current_node = current_node.next
+                length += 1
+            return length
+
+    def __reversed__(self):
         pass
