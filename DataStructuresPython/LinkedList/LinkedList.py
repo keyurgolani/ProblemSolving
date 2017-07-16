@@ -281,5 +281,87 @@ class LinkedList(object):
                 length += 1
             return length
 
+    def reverse(self):
+        if self._head is None or self._head.next is None:
+            return
+        else:
+            current_node = self._head
+            previous_node = None
+            next_node = self._head.next
+            while current_node is not None:
+                current_node.next = previous_node
+                previous_node = current_node
+                current_node = next_node
+                if current_node is not None:
+                    next_node = current_node.next
+            self._head = previous_node
+
     def __reversed__(self):
-        pass
+        other = self.__deepcopy__()
+        other.reverse()
+        return other
+
+    def __setitem__(self, key, value):
+        self.append(value, key)
+
+    def __setslice__(self, i, j, sequence):
+        if self._head is None:
+            return False
+        else:
+            node_before_slice = self._head
+            try:
+                for _ in range(i - 1):
+                    node_before_slice = node_before_slice.next
+            except AttributeError:
+                raise IndexError('Index ' + str(i) + ' out of range')
+            slice_first_node = node_before_slice.next
+            node_after_slice = slice_first_node
+            try:
+                for _ in range(j - i):
+                    node_after_slice = node_after_slice.next
+            except AttributeError:
+                raise IndexError('Index ' + str(j) + ' out of range')
+            node_after_slice = slice_first_node
+            sequence_last_node = sequence
+            while sequence_last_node.next is not None:
+                sequence_last_node = sequence_last_node.next
+            for _ in range(j - i):
+                del_node = node_after_slice
+                node_after_slice = node_after_slice.next
+                del del_node
+            node_before_slice.next = sequence
+            sequence_last_node.next = node_after_slice
+            return True
+
+    def remove(self, value):
+        if self._head is None:
+            raise AttributeError()
+        elif self._head.value == value:
+            del_node = self._head
+            self._head = self._head.next
+            del del_node
+        else:
+            current_node = self._head
+            try:
+                while current_node.next.value != value:
+                    current_node = current_node.next
+            except AttributeError:
+                raise AttributeError('Attribute ' + value + ' not found')
+            del_node = current_node.next
+            current_node.next = del_node.next
+            del del_node
+
+    def index(self, value):
+        if self._head is None:
+            return -1
+        else:
+            current_node = self._head
+            idx = 0
+            try:
+                while current_node.value != value:
+                    idx += 1
+                    current_node = current_node.next
+            except AttributeError:
+                return -1
+            return idx
+

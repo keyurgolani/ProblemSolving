@@ -78,5 +78,19 @@ def main():
     print len(ll)
     print len(ll2)
 
+    print str(reversed(ll2))
+    ll2.reverse()
+    print str(ll2)
+
+    print ll2.index(5)
+
+    print ll2.index(50)
+
+    ll2.remove(100)
+
+    ll2.__setslice__(2, 4, LLNode(35, LLNode(45, LLNode(55))))
+
+    print ll2
+
 if __name__ == '__main__':
     main()
