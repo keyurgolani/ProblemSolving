@@ -1,6 +1,7 @@
 from LinkedList import *
 import copy
 
+
 def main():
     head = LLNode(10)
     node2 = LLNode(20)
@@ -89,6 +90,10 @@ def main():
     ll2.remove(100)
 
     ll2.__setslice__(2, 4, LLNode(35, LLNode(45, LLNode(55))))
+
+    print ll2
+
+    ll2.map(lambda value: value * 10)
 
     print ll2
 

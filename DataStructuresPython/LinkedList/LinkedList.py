@@ -45,6 +45,7 @@ class LLNode(object):
 class LinkedList(object):
     def __init__(self, head=None):
         self._head = head
+        self._current_node = self._head
 
     def __str__(self):
         ll_string = ''
@@ -364,4 +365,12 @@ class LinkedList(object):
             except AttributeError:
                 return -1
             return idx
+
+    def map(self, func):
+        if self._head is None:
+            return
+        current_node = self._head
+        while current_node is not None:
+            current_node.value = func(current_node.value)
+            current_node = current_node.next
 
