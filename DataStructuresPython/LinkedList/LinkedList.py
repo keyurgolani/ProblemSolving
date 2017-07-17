@@ -11,6 +11,12 @@ class LLNode(object):
         del self._value
         del self._next
 
+    def __deepcopy__(self, memodict={}):
+        other = type(self)()
+        other.value = self._value
+        other.next = self._next
+        return other
+
     @property
     def value(self):
         return self._value
@@ -347,7 +353,7 @@ class LinkedList(object):
                 while current_node.next.value != value:
                     current_node = current_node.next
             except AttributeError:
-                raise AttributeError('Attribute ' + value + ' not found')
+                raise AttributeError('Attribute ' + str(value) + ' not found')
             del_node = current_node.next
             current_node.next = del_node.next
             del del_node
@@ -374,3 +380,36 @@ class LinkedList(object):
             current_node.value = func(current_node.value)
             current_node = current_node.next
 
+    def __getitem__(self, key):
+        if self._head is None:
+            raise IndexError('Index ' + str(key) + ' out of range')
+        else:
+            current_node = self._head
+            try:
+                for _ in range(key):
+                    current_node = current_node.next
+            except AttributeError:
+                raise IndexError('Index ' + str(key) + ' out of range')
+            return current_node.value
+
+    def __getslice__(self, i, j):
+        if self._head is None:
+            raise IndexError('Index ' + str(i) + ' out of range')
+        else:
+            current_node = self._head
+            try:
+                for _ in range(i):
+                    current_node = current_node.next
+            except AttributeError:
+                raise IndexError('Index ' + str(i) + ' out of range')
+            new_head = current_node
+            other_current_node = new_head
+            try:
+                for _ in range(j - i - 1):
+                    other_current_node.next = current_node.next.__deepcopy__()
+                    other_current_node = other_current_node.next
+                    current_node = current_node.next
+            except AttributeError:
+                raise IndexError('Index ' + str(j) + ' out of range')
+            other_current_node.next = None
+            return type(self)(new_head)

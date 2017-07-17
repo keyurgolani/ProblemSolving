@@ -97,5 +97,11 @@ def main():
 
     print ll2
 
+    for idx in range(len(ll2)):
+        print ll2[idx]
+
+    print str(ll2[2:])
+
+
 if __name__ == '__main__':
     main()
