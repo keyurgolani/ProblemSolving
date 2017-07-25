@@ -8,8 +8,7 @@ class LLNode(object):
         del self._next
 
     def __delete__(self):
-        del self._value
-        del self._next
+        self.__del__()
 
     def __deepcopy__(self, memodict={}):
         other = type(self)()
