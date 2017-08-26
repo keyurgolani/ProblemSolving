@@ -1,0 +1,4 @@
+2016-09-27T05:22 /1.1/friendships/list.json 75.00
+2016-09-27T05:23 /1.1/users/show.json 100.00
+2016-09-27T22:45 /1.1/friendships/create.json 100.00
+2016-09-27T22:45 /1.1/friendships/list.json 100.00
