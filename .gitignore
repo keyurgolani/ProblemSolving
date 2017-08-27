@@ -215,3 +215,7 @@ fabric.properties
 .idea/sonarlint
 
 0
+
+
+# Visual Studio Code
+.vscode
