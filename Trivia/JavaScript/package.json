@@ -1,0 +1,14 @@
+{
+  "name": "trivia",
+  "version": "1.0.0",
+  "description": "",
+  "main": "trivia1.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "author": "Keyur Golani <keyurrgolani@gmail.com> (https://keyurgolani.github.io)",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.1.2"
+  }
+}
