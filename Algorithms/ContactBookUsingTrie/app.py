@@ -1,6 +1,3 @@
-from collections import defaultdict
-
-
 class TrieNode(object):
     def __init__(self, children={}, bucket=None, end=False):
         self._children = children
@@ -29,7 +26,10 @@ class Trie(object):
         current_node._bucket = value
         current_node._end = True
 
-    def has_key(self, key):
+    def __contains__(self, key):
+        return self._has_key(key)
+
+    def _has_key(self, key):
         current_node = self.root
         for char in key:
             if char not in current_node.children.keys():
@@ -70,10 +70,12 @@ def main():
     while True:
         try:
             name = raw_input()
-            if contact_book.has_key(name):
-                print "{}'s phone number is {}".format(name, contact_book.retrieve_val(name))
+            if name in contact_book:
+                print "{}'s phone number is {}".format(
+                    name, contact_book.retrieve_val(name))
             else:
-                print "Contact Book does not have {}'s contact details".format(name)
+                print "Contact Book does not have {}'s contact details".format(
+                    name)
         except EOFError:
             break
 
