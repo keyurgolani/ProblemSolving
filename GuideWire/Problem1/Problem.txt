@@ -1,0 +1,2 @@
+Given a count, write a function that takes the count and returns as many numbers that sum upto 0.
+Variant: Given a number and a count, write a function that returns as many numbers as count that sums up to the given number.
